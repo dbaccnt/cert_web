@@ -154,12 +154,30 @@ document.addEventListener('DOMContentLoaded', () =>{
             submitBtn.textContent = 'Sending ...';
 
             try {
-                await new Promise(r => setTimeout(r, 900)); //simulate
-                submitBtn.textContent = 'Sent Ok';
+                const lambdaUrl = 'https://5121uuju44.execute-api.us-east-1.amazonaws.com/TestingStage/Contact';
+
+                const response = await fetch(lambdaUrl, {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json' 
+                    },
+                    body: JSON.stringify({
+                        name: fields.name.value.trim(),
+                        email: fields.email.value.trim(),
+                        subject: fields.subject.value.trim(),
+                        message: fields.message.value.trim()
+                    })
+                });
+
+                if (response.ok) throw new Error('Lambda returned an error');
+
+                submitBtn.textContent = 'Message Sent!';
                 status.style.color = getComputedStyle(document.documentElement)
                     .getPropertyValue('--success');
-                status.textContent = 'Thanks! Your message has been sent.';
+                status.textContent = 'Thank you for reaching out to us. We will get back to you as soon as possible.';
                 form.reset();
+                generateCaptcha();
+
             } catch (err) {
                 status.style.color = getComputedStyle(document.documentElement)
                     .getPropertyValue('--danger');

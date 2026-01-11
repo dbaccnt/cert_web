@@ -167,7 +167,7 @@
                         <p><i class="fab fa-whatsapp"></i> <strong>WhatsApp:</strong> +1(305)204-2527</p>
                     </div>
                 </div>
-                <form id="contact-form" class="contact-form" novalidate>
+                <form role="form" method="POST" id="contact-form" class="contact-form" action="https://5121uuju44.execute-api.us-east-1.amazonaws.com/TestingStage/Contact">
                 <div class="form-grid">
                     <div class="form-field">
                         <label for="name">Name</label>
@@ -205,7 +205,7 @@
                     <button type="submit" class="btn" id="submit-btn">Send Message</button>
                     <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
                 </div>
-            </form> <!-- action="https://formspree.io/certanus" method="POST"-->
+            </form> <!-- action="https://formspree.io/certanus" method="POST" novalidate-->
         </div>
     </section>
 </main>
