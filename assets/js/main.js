@@ -165,11 +165,17 @@ document.addEventListener('DOMContentLoaded', () =>{
                         name: fields.name.value.trim(),
                         email: fields.email.value.trim(),
                         subject: fields.subject.value.trim(),
-                        message: fields.message.value.trim()
+                        message: fields.message.value.trim(),
+                        captcha: fields.captcha.value.trim()
                     })
                 });
 
-                if (!response.ok) throw new Error('Lambda returned an error');
+                if (!response.ok) {
+                    // Try to surface backend error text for easier debugging
+                    let errText = '';
+                    try { errText = await response.text(); } catch (e) { /* ignore */ }
+                    throw new Error(`Lambda returned ${response.status}${errText ? ': ' + errText : ''}`);
+                }
 
                 submitBtn.textContent = 'Message Sent!';
                 status.style.color = getComputedStyle(document.documentElement)
@@ -179,9 +185,18 @@ document.addEventListener('DOMContentLoaded', () =>{
                 generateCaptcha();
 
             } catch (err) {
+                // Log the full error for debugging (CORS/network or backend error)
+                console.error('Contact form submit error:', err);
                 status.style.color = getComputedStyle(document.documentElement)
                     .getPropertyValue('--danger');
-                status.textContent = 'Something went wrong. Please try again.';
+                // Show a helpful message to the user while surfacing the real error for debugging
+                if (err instanceof TypeError) {
+                    // Often indicates network/CORS failure
+                    status.textContent = 'Network or CORS error. See console for details.';
+                } else {
+                    const msg = err && err.message ? err.message : 'Something went wrong. Check console for details.';
+                    status.textContent = msg.length > 200 ? msg.slice(0,200) + '...' : msg;
+                }
             } finally {
                 setTimeout(() => {
                     submitBtn.disabled = false;
