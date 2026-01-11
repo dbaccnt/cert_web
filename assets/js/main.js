@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () =>{
                     })
                 });
 
-                if (response.ok) throw new Error('Lambda returned an error');
+                if (!response.ok) throw new Error('Lambda returned an error');
 
                 submitBtn.textContent = 'Message Sent!';
                 status.style.color = getComputedStyle(document.documentElement)
