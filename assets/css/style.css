@@ -88,12 +88,17 @@ body{
     padding: clamp(4rem, 8vw, 8rem) 0 clamp(3rem, 6vw, 6rem);
     overflow:hidden;
 }
-.hero-inner{max-width: 720px}
+.hero-inner{
+    display:flex;
+    align-items:center;
+    gap: 2rem;
+}
+.hero-content{flex: 1}
 .hero h1{font-size: clamp(2rem, 4vw, 3rem); line-height:1.1; margin:.2rem 0 .6rem}
 .hero p{color: var(--muted); margin: 0 0 1.5rem}
 .hero-cta{display:flex; gap:.75rem}
-.hero-media{position:absolute; inset: auto -10% -20% auto; opacity:.25; transform: rotate(-2deg)}
-.hero-media img{max-width: 800px; width:100%; height:auto; filter:saturate(1.1) contrast(1.05)}
+.hero-media{position:static; flex: 1; text-align: right; opacity: 1; transform: none}
+.hero-media img{max-width: 100%; width: auto; height: auto; filter:saturate(1.1) contrast(1.05); border-radius: 8px}
 
 /* Buttons */
 .btn{
@@ -126,8 +131,11 @@ body{
 .work-item{
     background: linear-gradient(160deg, rgba(108,189,233,0.15), rgba(135,206,235,0.08));
     border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 1.1rem;
-    min-height: 140px; display:flex; align-items:end;
+    min-height: 140px; display:flex; align-items:start;
 }
+.work-item figcaption h3{ text-align: center; margin-top: 0; }
+.work-item figcaption ul{ margin: 0.5rem 0 0; padding-left: 1rem; text-align: left; }
+.work-item figcaption li{ margin: 0.35rem 0; }
 
 /* Contact section */
 .contact-wrapper {
@@ -231,7 +239,9 @@ input:focus, textarea:focus{
     .nav.open{display:block}
     .nav ul{flex-direction:column; align-items:stretch; padding:.5rem}
     .nav a{padding:.6rem .8rem}
-    .hero-media{display:none}
+    .hero-inner{flex-direction: column; gap: 1.25rem}
+    .hero-media{display:block; margin-top: 1rem; text-align:center}
+    .hero-media img{max-width:100%; height:auto}
     .grid-3, .work-grid{grid-template-columns: 1fr}
     .form-grid{grid-template-columns: 1fr}
 }
