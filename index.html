@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <!-- Preload Hero (optional) -->
-    <link rel="preload" as="image" href="assets/img/homepic2.png" />
+    <link rel="preload" as="image" href="assets/img/hero.jpg" />
 </head>
 <body>
 <!-- Skip link for accessibility  -->
@@ -50,18 +50,16 @@
 <!-- Hero -->
 <section class="hero" role="region" aria-label="Hero">
     <div class="container hero-inner">
-        <div class="hero-content">
-            <h1>Empowering data teams with seamless data file ingestion.</h1>
-            <p>Our solution allows support users to securely upload data to Snowflake via an intuitive browser interface. It streamlines ingestion, ensures data consistency through automated validation, and reduces engineering dependency while maintaining traceability.</p>
-            <div class="hero-cta">
-                <!-- <a href="#services" class="btn">What we do</a> -->
-                <!-- <a href="#contact" class="btn btn-outline">Get in touch</a> -->
-            </div>
+        <h1 style="text-align: center;">Streamline Your Enterprise Data Management</h1>
+        <p style="text-align: center;">Easily upload support data files to your ODS and enhance your team's data warehouse insights.</p>
+        <div class="hero-cta">
+            <a href="#services" class="btn">What we do</a>
+            <a href="#contact" class="btn btn-outline">Get in touch</a>
         </div>
-        <figure class="hero-media" aria-hidden="true">
-            <img src="assets/img/homepic2.png" alt="Product screenshot" />
-        </figure>
     </div>
+    <figure class="hero-media" aria-hidden="true">
+        <img src="assets/img/hero.jpg" alt="" />
+    </figure>
 </section>
 
 <main id="main">
@@ -135,36 +133,20 @@
             <div class="work-grid">
                 <figure class="work-item">
                     <figcaption>
-                        <h3>Key Capabilities</h3>
-                        <ul>
-                            <li>Secure web-based file upload for support and operational data.</li>
-                            <li>Data validation and schema checks prior to load</li>
-                            <li>Upload history, status tracking, and error reporting</li>
-                            <li>Role-based access control to protect sensitive data</li>
-                        </ul>
+                        <h3 style="text-align: center;">Collaboration Simplified</h3>
+                        <p style="text-align: center;">Create tailored roles so each user accesses only the relevant information they need.</p>
                     </figcaption>
                 </figure>
                 <figure class="work-item">
                     <figcaption>
-                        <h3>Supported Use Cases</h3>
-                        <ul>
-                            <li>Uploading support-provided datasets for analysis or troubleshooting.</li>
-                            <li>Loading corrected or supplemental data for downstream reporting</li>
-                            <li>One-time or occasional data loads that do not require automated pipelines</li>
-                            <li>Providing non-technical users a controlled way to ingest data</li>
-                        </ul>
+                        <h3 style="text-align: center;">Track User Sessions</h3>
+                        <p style="text-align: center;">Keep track of all login and logout activities, along with detailed user session information.</p>
                     </figcaption>
                 </figure>
                 <figure class="work-item">
                     <figcaption>
-                        <h3>Security & Compliance Notes</h3>
-                        <ul>
-                            <li>All data transfers are encrypted in transit.</li>
-                            <li>Access is restricted via role-based permissions</li>
-                            <li>Uploaded files are not persisted beyond processing unless required</li>
-                            <li>All uploads are logged for auditing and traceability</li>
-                            <li>Sensitive data handling complies with internal governance standards</li>
-                        </ul>
+                        <h3 style="text-align: center;">Real-Time Data Validations</h3>
+                        <p style="text-align: center;">Verify data in real-time using table and column-level validations.</p>
                     </figcaption>
                 </figure>
             </div>
@@ -185,7 +167,7 @@
                         <p><i class="fab fa-whatsapp"></i> <strong>WhatsApp:</strong> +1(305)204-2527</p>
                     </div>
                 </div>
-                <form role="form" method="POST" id="contact-form" class="contact-form" action="https://5121uuju44.execute-api.us-east-1.amazonaws.com/TestingStage/Contact">
+                <form id="contact-form" class="contact-form" novalidate>
                 <div class="form-grid">
                     <div class="form-field">
                         <label for="name">Name</label>
@@ -200,14 +182,14 @@
                     </div>
 
                     <div class="form-field">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" required />
+                        <label for="Subject">Subject</label>
+                        <input type="text" id="Subject" name="Subject" required />
                         <small class="error" id="error-subject" role="alert"></small>
                     </div>
 
                     <div class="form-field form-field-full">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="7" required></textarea>
+                        <label for="Message">Message</label>
+                        <textarea id="Message" name="Message" rows="7" required></textarea>
                         <small class="error" id="error-message" role="alert"></small>
                     </div>
 
@@ -223,7 +205,7 @@
                     <button type="submit" class="btn" id="submit-btn">Send Message</button>
                     <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
                 </div>
-            </form> <!-- action="https://formspree.io/certanus" method="POST" novalidate-->
+            </form> <!-- action="https://formspree.io/certanus" method="POST"-->
         </div>
     </section>
 </main>

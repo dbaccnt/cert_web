@@ -154,49 +154,16 @@ document.addEventListener('DOMContentLoaded', () =>{
             submitBtn.textContent = 'Sending ...';
 
             try {
-                const lambdaUrl = 'https://5121uuju44.execute-api.us-east-1.amazonaws.com/TestingStage/Contact';
-
-                const response = await fetch(lambdaUrl, {
-                    method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json' 
-                    },
-                    body: JSON.stringify({
-                        name: fields.name.value.trim(),
-                        email: fields.email.value.trim(),
-                        subject: fields.subject.value.trim(),
-                        message: fields.message.value.trim(),
-                        captcha: fields.captcha.value.trim()
-                    })
-                });
-
-                if (!response.ok) {
-                    // Try to surface backend error text for easier debugging
-                    let errText = '';
-                    try { errText = await response.text(); } catch (e) { /* ignore */ }
-                    throw new Error(`Lambda returned ${response.status}${errText ? ': ' + errText : ''}`);
-                }
-
-                submitBtn.textContent = 'Message Sent!';
+                await new Promise(r => setTimeout(r, 900)); //simulate
+                submitBtn.textContent = 'Sent Ok';
                 status.style.color = getComputedStyle(document.documentElement)
                     .getPropertyValue('--success');
-                status.textContent = 'Thank you for reaching out to us. We will get back to you as soon as possible.';
+                status.textContent = 'Thanks! Your message has been sent.';
                 form.reset();
-                generateCaptcha();
-
             } catch (err) {
-                // Log the full error for debugging (CORS/network or backend error)
-                console.error('Contact form submit error:', err);
                 status.style.color = getComputedStyle(document.documentElement)
                     .getPropertyValue('--danger');
-                // Show a helpful message to the user while surfacing the real error for debugging
-                if (err instanceof TypeError) {
-                    // Often indicates network/CORS failure
-                    status.textContent = 'Network or CORS error. See console for details.';
-                } else {
-                    const msg = err && err.message ? err.message : 'Something went wrong. Check console for details.';
-                    status.textContent = msg.length > 200 ? msg.slice(0,200) + '...' : msg;
-                }
+                status.textContent = 'Something went wrong. Please try again.';
             } finally {
                 setTimeout(() => {
                     submitBtn.disabled = false;
