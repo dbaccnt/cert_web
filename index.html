@@ -167,7 +167,7 @@
                         <p><i class="fab fa-whatsapp"></i> <strong>WhatsApp:</strong> +1(305)204-2527</p>
                     </div>
                 </div>
-                <form id="contact-form" class="contact-form" novalidate>
+                <form id="contact-form" class="contact-form" novalidate action="https://5121uuju44.execute-api.us-east-1.amazonaws.com/TestingStage/Contact" method="POST">
                 <div class="form-grid">
                     <div class="form-field">
                         <label for="name">Name</label>
@@ -182,14 +182,14 @@
                     </div>
 
                     <div class="form-field">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" required />
+                        <label for="Subject">Subject</label>
+                        <input type="text" id="Subject" name="Subject" required />
                         <small class="error" id="error-subject" role="alert"></small>
                     </div>
 
                     <div class="form-field form-field-full">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="7" required></textarea>
+                        <label for="Message">Message</label>
+                        <textarea id="Message" name="Message" rows="7" required></textarea>
                         <small class="error" id="error-message" role="alert"></small>
                     </div>
 
